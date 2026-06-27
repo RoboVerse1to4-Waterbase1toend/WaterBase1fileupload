@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waterbase Sites</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glass">
+    <h1>Waterbase Site Creator</h1>
+    <p style="margin-top:-10px; font-size:14px; opacity:0.8;">Roboverse Leadership</p>
+    <p style="margin-top:-5px; font-size:12px; opacity:0.7;">
+        Filenames must contain only A–Z, a–z, 0–9, and _ (underscore) character otherwise the download button will be blocked.
+    </p>
+
+    <input type="text" id="owner" placeholder="Owner name">
+    <input type="password" id="password" placeholder="Password">
+    <input type="file" id="file">
+
+    <button onclick="upload()">Create Site</button>
+
+    <p id="result"></p>
+
+    <!-- GET button (hidden until a site is created) -->
+    <button id="getBtn" style="display:none; margin-top:10px;" onclick="openSite()">
+        GET
+    </button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

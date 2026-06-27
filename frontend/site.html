@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waterbase Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glass">
+    <h2 id="title">Waterbase Site</h2>
+    <p id="ownerText"></p>
+
+    <input type="password" id="pwd" placeholder="Enter password">
+    <button onclick="unlock()">Unlock</button>
+
+    <div id="downloadBox" style="display:none; margin-top:12px;">
+        <button id="downloadBtn">Download</button>
+    </div>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const siteName = params.get("name");
+
+// Set title
+document.getElementById("title").innerText = siteName + " — Waterbase";
+
+// Unlock function
+function unlock() {
+    const pwd = document.getElementById("pwd").value;
+
+    fetch("https://waterbase1fileupload-2.onrender.com/check-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ siteName, password: pwd })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (!data.ok) {
+            document.getElementById("msg").innerText = "Wrong password.";
+            return;
+        }
+
+        document.getElementById("msg").innerText = "";
+        document.getElementById("downloadBox").style.display = "block";
+
+        document.getElementById("downloadBtn").onclick = () => {
+            window.location.href = "https://waterbase1fileupload-2.onrender.com" + data.downloadUrl;
+        };
+    });
+}
+</script>
+</body>
+</html>
