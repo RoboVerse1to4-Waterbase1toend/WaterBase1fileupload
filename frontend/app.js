@@ -31,4 +31,4 @@ function upload() {
 
 function openSite() {
     window.open(lastSiteUrl, "_blank");
-}
+          }
