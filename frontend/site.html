@@ -1,8 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waterbase Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="glass">
+    <!-- Dynamic Title -->
+    <h1 id="title"></h1>
+
+    <!-- Password Input -->
+    <input type="password" id="pwd" placeholder="Enter password">
+
+    <!-- Unlock Button -->
+    <button onclick="unlock()">Unlock</button>
+
+    <!-- Message (wrong password, etc.) -->
+    <p id="msg"></p>
+
+    <!-- Download Box (hidden until unlocked) -->
+    <div id="downloadBox" style="display:none; margin-top:20px;">
+        <button id="downloadBtn">Download File</button>
+    </div>
+</div>
+
 <script>
 const params = new URLSearchParams(window.location.search);
 const siteName = params.get("name");
 
-// Set the page title
+// Set page title
 document.getElementById("title").innerText = siteName + " — Waterbase";
 
 // Unlock function
@@ -32,3 +59,6 @@ function unlock() {
     });
 }
 </script>
+
+</body>
+</html>
